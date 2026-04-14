@@ -1778,3 +1778,126 @@ html[data-theme="dark"] .ft-orb {
   .ft-links svg { color: #444 !important; }
   .ft-meta { font-size: 8pt; text-align: center; }
 }
+
+/* sk-verb — the builder action word in each skill heading */
+.sk-verb {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+@media print {
+  .sk-verb { color: #111 !important; }
+}
+
+/* ============================================================
+   EXPERIENCE ERAS — "Act I / II / III / IV" chapter strips
+   ============================================================ */
+.exp-era {
+  position: relative;
+  margin: 3.5rem 0 1.5rem;
+  padding: 1.5rem 1.75rem 1.5rem 5rem;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  z-index: 2;
+  overflow: hidden;
+  isolation: isolate;
+}
+.exp-era::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 85%);
+}
+.exp-era::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+html[data-theme="dark"] .exp-era::after {
+  background: radial-gradient(circle, rgba(122, 162, 255, 0.22) 0%, transparent 70%);
+}
+.exp-era:first-of-type { margin-top: 1.5rem; }
+.exp-era-num {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 0 6px var(--bg);
+  z-index: 3;
+}
+.exp-era-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem 1rem;
+  margin-bottom: .25rem;
+}
+.exp-era-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--text);
+}
+.exp-era-dates {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.exp-era-caption {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 72ch;
+}
+
+@media (max-width: 720px) {
+  .exp-era { padding: 1.25rem 1.25rem 1.25rem 1.25rem; margin-top: 2.5rem; }
+  .exp-era-num { position: static; transform: none; margin-bottom: .75rem; box-shadow: none; width: 44px; height: 44px; font-size: 0.78rem; }
+  .exp-era-title { font-size: 1.1rem; }
+  .exp-era-dates { white-space: normal; }
+}
+
+@media print {
+  .exp-era {
+    background: none !important;
+    border: 1px solid #999 !important;
+    padding: .4rem .65rem .5rem 3.5rem;
+    margin: .85rem 0 .4rem;
+    break-inside: avoid;
+    break-after: avoid-page;
+  }
+  .exp-era::before, .exp-era::after { display: none; }
+  .exp-era-num {
+    background: #fff !important; color: #111 !important;
+    border: 1.5px solid #999 !important; box-shadow: none !important;
+    width: 40px; height: 40px; font-size: 8pt;
+    left: .65rem;
+  }
+  .exp-era-title { font-size: 11pt; color: #111 !important; }
+  .exp-era-dates { font-size: 8pt; color: #444 !important; }
+  .exp-era-caption { font-size: 8.5pt; color: #333 !important; }
+}
