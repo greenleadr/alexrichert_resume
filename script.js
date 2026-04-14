@@ -77,8 +77,12 @@
             counters.forEach(startCounter);
           }
         });
-      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+      }, { rootMargin: '0px 0px -60px 0px', threshold: 0 });
       revealEls.forEach(function (el) { revealIO.observe(el); });
+      // safety net: any reveal element still hidden after 1.2s gets forced visible
+      setTimeout(function () {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      }, 1200);
     } else {
       // no IO support — reveal everything immediately
       revealEls.forEach(function (el) { el.classList.add('is-visible'); });
